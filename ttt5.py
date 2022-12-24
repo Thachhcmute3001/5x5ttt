@@ -65,6 +65,8 @@ def pc_move(move): # this is the computer move, it choses a position ramdomly
 	move = random.randrange(1, 26)
 	if board[move] == ' ':
 		board[move] =  'o'
+		move_str = str(move)
+		ser.write(move_str.encode())
 		return move
 	else:
 		full_board() # check if the board is full
@@ -100,8 +102,8 @@ def ai(move): # this is how the AI chooses its move.
 			boardCopy[i] = let
 			if check_win2(boardCopy, let): #let could be 'o' or 'x'
 				move = i
-				move_str = str(move)
 				board[i] = 'o' #board[i] will fill with 'o' not to let the player win or will fill to win
+				move_str = str(move)
 				ser.write(move_str.encode())
 				return move
 
@@ -115,8 +117,8 @@ def ai(move): # this is how the AI chooses its move.
 				boardCopy[j] = let
 				if check_win2(boardCopy, let):
 					move = i
-					move_str = str(move)
 					board[i] = 'o'
+					move_str = str(move)
 					ser.write(move_str.encode())
 					return move
 
@@ -139,8 +141,8 @@ def ai(move): # this is how the AI chooses its move.
 					boardCopy[t] = let
 					if check_win2(boardCopy, let):
 						move = i
-						move_str = str(move)
 						board[i] = 'o'
+						move_str = str(move)
 						ser.write(move_str.encode())
 						return move
 	pc_move(move)
