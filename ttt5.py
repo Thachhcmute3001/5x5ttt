@@ -47,8 +47,7 @@ def player_move(move, which_game):	# execute the player move
 		print('Invalid move')
 		if which_game == 'ai':
 			main2()
-		elif which_game == 'random':
-			main()
+
    
 def player_move2(move, which_game):	# execute the player move
 
@@ -59,8 +58,7 @@ def player_move2(move, which_game):	# execute the player move
 		print('Invalid move')
 		if which_game == 'ai':
 			main3()
-		elif which_game == 'random':
-			main4()
+
 
 
 def pc_move(move): # this is the computer move, it choses a position ramdomly
@@ -78,7 +76,7 @@ def pc_move2(move): # this is the computer move, and we knew where it went
 		return move
 	else:
 		full_board() # check if the board is full
-		pc_move2(move)
+		pc_move2(random.randrange(1, 26))
   
 def pc_blind(move): # this is the computer move, it choses a position ramdomly
 	if board[move] == ' ':
@@ -88,7 +86,7 @@ def pc_blind(move): # this is the computer move, it choses a position ramdomly
 		return move
 	else:
 		full_board() # check if the board is full
-		pc_blind(move)
+		pc_blind(random.randrange(1, 26))
 
 def ai(move): # this is how the AI chooses its move.
 	
@@ -145,7 +143,6 @@ def ai(move): # this is how the AI chooses its move.
 						board[i] = 'o'
 						ser.write(move_str.encode())
 						return move
-
 	pc_move(move)
  
 def ai2(move): # this is how the AI chooses its move.
@@ -207,57 +204,6 @@ def ai2(move): # this is how the AI chooses its move.
 	pc_blind(random.randrange(1, 26)) #dont know where to go, just go blind
 
 
-def main():     # the main function for the easy verson of the game
-
-	check_win(board, 'x')
-	check_win(board, 'o')
-	full_board()
-	try:
-		move = int(input("At which position do you move? 1-25   "))
-	except ValueError:
-		print("Invalid input. Please enter an integer number\n")
-		main()
-	
-	if move >= 1 and move <= 25:
-		pass
-	else:
-		print('Invalid position')
-		main()
-
-	player_move(move, 'random')
-	print_board(board)
-	print("\n")
-	pc_move(move)
-	print_board(board)
-	print("\n")
-
-	main()
- 
-def main4():     # the main function for the easy verson of the game
-
-	check_win(board, 'x')
-	check_win(board, 'o')
-	full_board()
-	try:
-		move = int(input("At which position do you move? 1-25   "))
-	except ValueError:
-		print("Invalid input. Please enter an integer number\n")
-		main4()
-	
-	if move >= 1 and move <= 25:
-		pass
-	else:
-		print('Invalid position')
-		main4()
-
-	player_move2(move, 'random')
-	print_board(board)
-	print("\n")
-	pc_move2(move)
-	print_board(board)
-	print("\n")
-
-	main4()
 
 def main2():    # the main function for the hard version of the game
 
@@ -306,32 +252,17 @@ def main3():
 	ai2(move)
 	print_board(board)
 	print("\n")
-
 	main3()
  
- 
-
 def version():  # chose a version of the game
-	try: 
-		version1 = str(input("Do you want to play the easy or hard version? (e/h)   "))
-	except ValueError:
-		print("Invalid input, please enter just e or h")
-		version()
-  
-	if version1.lower() == 'e':
-		main()
-	elif version1.lower() == 'h':
-		turn = str(input("Who play first? (m/p)"  ))
-		if turn.lower() == 'p':
-			main2()
-		elif turn.lower() == 'm':
-			pc_blind(1)
-			print_board(board)
-			print("\n")
-			main3()
-	else:
-		print('Error')
-		version()
+    turn = str(input("Who play first? (m/p)"  ))
+    if turn.lower() == 'p':
+        main2()
+    elif turn.lower() == 'm':
+        pc_blind(1)
+        print_board(board)
+        print("\n")
+        main3()
 while True:
 	version()
  
