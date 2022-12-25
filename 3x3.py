@@ -21,11 +21,15 @@ def full_board(): # check if the board is full
 		return
 	else:
 		print("It's a tie")
+		end = '10'
+		ser.write(end.encode())
 		quit()
 
 def check_win(bo, le): #check all the options and if there's a win the game ends (bo = board, le = letter)
 	if (bo[1] == le and bo[2] == le and bo[3] == le) or (bo[4] == le and bo[5] == le and bo[6] == le) or (bo[7] == le and bo[8] == le and bo[9] == le) or (bo[1] == le and bo[5] == le and bo[9] == le) or (bo[3] == le and bo[5] == le and bo[7] == le) or (bo[1] == le and bo[4] == le and bo[7] == le) or (bo[2] == le and bo[5] == le and bo[8] == le) or (bo[3] == le and bo[6] == le and bo[9] == le):
 		print("Has won the ", le, "'s")
+		end = '10'
+		ser.write(end.encode())
 		quit()
 	else:
 		return
@@ -403,5 +407,3 @@ def version_3x3():  # chose a version of the game
             print_board(board)
             print("\n")
             main3_x()
-#while True:
-#	version_3x3()
