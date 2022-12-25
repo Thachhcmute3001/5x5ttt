@@ -25,11 +25,15 @@ def full_board(): # check if the board is full
 		return
 	else:
 		print("It's a tie")
+		end = '26'
+		ser.write(end.encode())
 		quit()
 
 def check_win(bo, le): #check all the options and if there's a win the game ends (bo = board, le = letter)
 	if (bo[1] == le and bo[2] == le and bo[3] == le and bo[4] == le and bo[5] == le) or (bo[6] ==le and bo[7] == le and bo[8] == le and bo[9] == le and bo[10] == le) or (bo[11] ==le and bo[12] == le and bo[13] == le and bo[14] == le and bo[15] == le) or (bo[16] ==le and bo[17] == le and bo[18] == le and bo[19] == le and bo[20] == le) or (bo[21] ==le and bo[22] == le and bo[23] == le and bo[24] == le and bo[25] == le) or (bo[1] == le and bo[6] == le and bo[11] == le and bo[16] == le and bo[21] == le) or (bo[2] == le and bo[7] == le and bo[12] == le and bo[17] == le and bo[22] == le) or (bo[3] ==le and bo[8] == le and bo[13] == le and bo[18] == le and bo[23] == le) or (bo[4] ==le and bo[9] == le and bo[14] == le and bo[19] == le and bo[24] == le) or (bo[5] ==le and bo[10] == le and bo[15] == le and bo[20] == le and bo[25] == le) or (bo[1] ==le and bo[7] == le and bo[13] == le and bo[19] == le and bo[25] == le) or (bo[5] ==le and bo[9] == le and bo[13] == le and bo[17] == le and bo[21] == le):
 		print("Has won the ", le, "'s")
+		end = '26'
+		ser.write(end.encode())
 		quit()
 	else:
 		return
