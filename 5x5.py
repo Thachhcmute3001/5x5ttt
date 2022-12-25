@@ -471,6 +471,4 @@ def version_5x5():  # chose a version of the game
             print_board(board)
             print("\n")
             main3_x()
-#while True:
-#	version_5x5()
  
